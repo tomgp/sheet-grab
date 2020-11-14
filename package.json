@@ -16,7 +16,8 @@
     "express": "^4.17.1",
     "google-spreadsheet": "^3.0.13",
     "helmet": "^4.2.0",
-    "lru-cache": "^6.0.0"
+    "lru-cache": "^6.0.0",
+    "object-path": "^0.11.5"
   },
   "devDependencies": {
     "eslint": "^7.13.0",
