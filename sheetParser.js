@@ -1,30 +1,28 @@
 const { parseRows } = require('./parse-rows');
 
 function sheetParser(doc, res, req) {
-  return (err, data) => {
+  return () => {
     doc.loadInfo()
       .then(() => {
         const sheetPromises = doc.sheetsByIndex
           .filter((ws) => (ws.title.indexOf('-nopub') === -1)) // exclued sheets with -nopub switch
           .map((ws) => ws.getRows()
-            .then((rows) => parseRows(rows, ws.title))
-            .then((data) => ({
+            .then((rows) => ({
               title: ws.title,
-              data,
+              data: parseRows(rows, ws.title),
             })));
 
         Promise.all(sheetPromises)
           .then((csvs) => {
             res.json({
-              id: `${req.params.sheetID}`,
               ssid: `${doc.spreadsheetId}`,
               title: doc.title,
               sheets: csvs,
             });
           });
       })
-      .catch((err) => {
-        res.json({ error: `load info : ${err}` });
+      .catch((loadError) => {
+        res.json({ error: `load info : ${loadError}` });
       });
   };
 }

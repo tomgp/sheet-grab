@@ -21,7 +21,6 @@ app.get('/:sheetID.json', (req, res) => {
   })
     .then(sheetParser(doc, res, req))
     .catch((err) => {
-      console.log(err);
       res.json({ error: `service acc error : ${err}` });
     });
 });

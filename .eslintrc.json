@@ -11,5 +11,8 @@
         "ecmaVersion": 12
     },
     "rules": {
+        "no-plusplus": "off",
+        "prefer-destructuring": "off",
+        "no-unused-vars": "warn"
     }
 }
