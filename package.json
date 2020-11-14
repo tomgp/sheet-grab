@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js",
-    "dev": "nodemon index.js"
-
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "lint": "eslint *.js --fix"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +17,10 @@
     "google-spreadsheet": "^3.0.13",
     "helmet": "^4.2.0",
     "lru-cache": "^6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
   }
 }
