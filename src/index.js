@@ -2,15 +2,15 @@ const express = require('express');
 const helmet = require('helmet');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const key = require('../keys/sheet-grabber-295609-9fc82beacf7f.json');
-const { sheetParser } = require('./sheetParser');
+const { googleSheetParser } = require('./googleSheetParser');
 
 const app = express();
-const port = 3000;
+const port = process.env.EXPRESS_PORT ? process.env.EXPRESS_PORT : 3000;
 
 app.use(helmet());
 
 app.get('/', (req, res) => {
-  res.send('Are you ready to grab some sheets?');
+  res.json({health:'ready and willing'});
 });
 
 app.get('/:sheetID.json', (req, res) => {
@@ -19,7 +19,7 @@ app.get('/:sheetID.json', (req, res) => {
     client_email: key.client_email,
     private_key: key.private_key,
   })
-  .then(sheetParser(res, req, doc))
+  .then(googleSheetParser(res, req, doc))
   .catch((err) => {
     res.json({ error: `service acc error : ${err}` });
   });

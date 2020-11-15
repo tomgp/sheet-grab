@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: node:14
+    container_name: nodejs
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - EXPRESS_PORT=$EXPRESS_PORT
+      - PRIVATE_KEY=$PRIVATE_KEY
+      - CLIENT_EMAIL=$CLIENT_EMAIL
+    ports:
+      - "80:8080"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+    command: npm start
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  node_modules:
