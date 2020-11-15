@@ -1,5 +1,13 @@
 const { parseRows } = require('./parse-rows');
 
+function structureByTitle(sheets){
+  const restructured = {};
+  sheets.forEach((sheet)=>{
+    restructured[sheet.title.replace(' -config', '')] = sheet.data;
+  });
+  return restructured;
+}
+
 function sheetParser(doc, res, req) {
   return () => {
     doc.loadInfo()
@@ -13,11 +21,11 @@ function sheetParser(doc, res, req) {
             })));
 
         Promise.all(sheetPromises)
-          .then((csvs) => {
+          .then((sheets) => {
             res.json({
               ssid: `${doc.spreadsheetId}`,
               title: doc.title,
-              sheets: csvs,
+              sheets: structureByTitle(sheets),
             });
           });
       })

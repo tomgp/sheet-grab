@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const key = require('./keys/sheet-grabber-295609-9fc82beacf7f.json');
+const key = require('../keys/sheet-grabber-295609-9fc82beacf7f.json');
 const { sheetParser } = require('./sheetParser');
 
 const app = express();
@@ -19,10 +19,10 @@ app.get('/:sheetID.json', (req, res) => {
     client_email: key.client_email,
     private_key: key.private_key,
   })
-    .then(sheetParser(doc, res, req))
-    .catch((err) => {
-      res.json({ error: `service acc error : ${err}` });
-    });
+  .then(sheetParser(doc, res, req))
+  .catch((err) => {
+    res.json({ error: `service acc error : ${err}` });
+  });
 });
 
 app.listen(port, () => {
