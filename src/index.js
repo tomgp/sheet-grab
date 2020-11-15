@@ -19,7 +19,7 @@ app.get('/:sheetID.json', (req, res) => {
     client_email: key.client_email,
     private_key: key.private_key,
   })
-  .then(sheetParser(doc, res, req))
+  .then(sheetParser(res, req, doc))
   .catch((err) => {
     res.json({ error: `service acc error : ${err}` });
   });

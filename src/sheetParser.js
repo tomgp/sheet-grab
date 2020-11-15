@@ -8,7 +8,7 @@ function structureByTitle(sheets){
   return restructured;
 }
 
-function sheetParser(doc, res, req) {
+function sheetParser(res, req, doc) {
   return () => {
     doc.loadInfo()
       .then(() => {
