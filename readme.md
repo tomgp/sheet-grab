@@ -34,10 +34,16 @@ will result in
 ```
 
 ## Sheet conventions
+
+### nopub
+
 Adding ` -nopub` to the end of a sheet name will stop it from being published
 e.g. `home addresses -nopub`
 
-adding ` -config` to the end of a sheet name will produce a object of keys and values from the first 2 columns
+Adding ` -config` to the end of a sheet name will produce a object of keys and values from the first 2 columns
+
+
+### config
 
 e.g.
 `appdata -config`
@@ -59,6 +65,23 @@ and will produce
 ```
 
 note that `something.list` in the key column results in an array
+
+### array
+Adding `-array` to your sheet will give you an array of arrays 
+so
+```csv
+1,2,3
+a,b,c
+i,ii,ii
+```
+becomes
+```json
+[
+  [1,2,3],
+  ["a","b","c"],
+  ["i","ii","iii"]
+]
+```
 
 --
 

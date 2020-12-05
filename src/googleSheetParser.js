@@ -62,8 +62,15 @@ function parseRows(rows, title) {
     acc.push(structureRow(cleanRow));
     return acc;
   }, []);
+  
+  if(title.indexOf('-array') > -1) { // if it's a simple array sheet
+    // slightly awkwardly converting the google sheet object to some plain JSON
+    // then using d3 to format as a csv as god intended
+    const pureRows = csvParseRows(csvFormat(sheetJSON));
+    return(pureRows);
+  }
 
-  if (title.indexOf('-config') > -1) {
+  if (title.indexOf('-config') > -1) { // if it's a config sheet
     // slightly awkwardly converting the google sheet object to some plain JSON
     // then using d3 to format as a csv as god intended
     const pureRows = csvParseRows(csvFormat(sheetJSON));
