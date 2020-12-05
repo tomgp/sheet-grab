@@ -7,6 +7,7 @@ https://data.2x2.graphics/{MY_GOOGLE_SHEET_ID}.json.
 
 TODO
  [] allow rows to be hidden
+ [] lru cache
 
 example sheet:
 https://data.2x2.graphics/12z4r0EnA0GQIrVWa1s9gqEu79ZJx9ql0twrvIieNUYA.json
@@ -58,3 +59,9 @@ and will produce
 ```
 
 note that `something.list` in the key column results in an array
+
+--
+
+## Implementation details
+
+The core of the project is an __express__ server with __helmet__ for a bit of security. Dealing with googles API is handled by the __google-spreadsheet__ npm module. As it stands there's not caching on the server, instead I'm Cloudflare.
