@@ -1,10 +1,19 @@
 const { csvFormat, csvParseRows } = require('d3-dsv');
 const objectPath = require('object-path');
 
+function cleanSheetName(name){
+  let cleanName = name;
+  [' -config',' -array']
+    .forEach(opt=>{
+      cleanName = cleanName.replace(opt,'')
+    });
+  return cleanName;
+}
+
 function structureByTitle(sheets){
   const restructured = {};
   sheets.forEach((sheet)=>{
-    restructured[sheet.title.replace(' -config', '')] = sheet.data;
+    restructured[cleanSheetName(sheet.title)] = sheet.data;
   });
   return restructured;
 }
