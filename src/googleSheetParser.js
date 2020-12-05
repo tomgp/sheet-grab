@@ -41,7 +41,11 @@ function structureRow(rowObj) {
   const structured = {};
   for (let i = 0; i < entries.length; i++) {
     const [key, value] = entries[i];
-    objectPath.set(structured, key, value);
+    if(key.indexOf('.list')>1){
+      objectPath.set(structured, key.split('.list')[0], value.split(','));
+    }else{
+      objectPath.set(structured, key, value);
+    }
   }
   return structured;
 }
@@ -58,6 +62,7 @@ function parseRows(rows, title) {
     acc.push(structureRow(cleanRow));
     return acc;
   }, []);
+
   if (title.indexOf('-config') > -1) {
     // slightly awkwardly converting the google sheet object to some plain JSON
     // then using d3 to format as a csv as god intended
