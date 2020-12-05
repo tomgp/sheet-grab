@@ -1,8 +1,20 @@
+# Get google spreadsheets
+
+The idea here is to provide a dead simple JSON interface to google sheets where the sheet creator has some control over structure beyond just an array of objects.
+
+To publish a sheet you share it with the appropriate google account and then it'll become available at
+https://data.2x2.graphics/{MY_GOOGLE_SHEET_ID}.json.
+
+TODO
+ [] allow rows to be hidden
 
 example sheet:
 https://data.2x2.graphics/12z4r0EnA0GQIrVWa1s9gqEu79ZJx9ql0twrvIieNUYA.json
 
+I'm running this off a basic Digital Ocean droplet using [pm2](https://pm2.keymetrics.io)
+
 --
+
 ## Column conventions
 columns named...
 `thing.one` and `thing.two` will  create a structure int he resulting JSON like
