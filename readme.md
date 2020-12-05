@@ -12,7 +12,12 @@ columns named...
   "one":"value",
   "two":"value"
 }
+```
 
+columns named `thing.list` with row contents separated by commas will
+will result in 
+```json
+"thing":[ "a","b","c" ]
 ```
 
 ## Sheet conventions
@@ -40,4 +45,4 @@ and will produce
 }
 ```
 
-note that `somethign.list` in the key column results in an array
+note that `something.list` in the key column results in an array
