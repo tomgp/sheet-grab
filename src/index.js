@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const helmet = require('helmet');
+const cors = require('cors');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 // const key = require('../keys/sheet-grabber-295609-9fc82beacf7f.json');
 const { googleSheetParser } = require('./googleSheetParser');
@@ -14,7 +15,7 @@ app.get('/', (req, res) => {
   res.json({health:'ready and willing'});
 });
 
-app.get('/:sheetID.json', (req, res) => {
+app.get('/:sheetID.json', cors(), (req, res) => {
   const doc = new GoogleSpreadsheet(req.params.sheetID);
   doc.useServiceAccountAuth({
     client_email: process.env.CLIENT_EMAIL,
