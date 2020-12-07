@@ -6,8 +6,8 @@ To publish a sheet you share it with the appropriate google account and then it'
 https://data.2x2.graphics/{MY_GOOGLE_SHEET_ID}.json.
 
 TODO
- [] allow rows to be hidden
- [] lru cache
+ - [ ] allow rows to be hidden
+ - [ ] lru cache
 
 example sheet:
 https://data.2x2.graphics/12z4r0EnA0GQIrVWa1s9gqEu79ZJx9ql0twrvIieNUYA.json
