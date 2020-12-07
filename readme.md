@@ -50,17 +50,17 @@ e.g.
 might look like this..
 
 ```csv
-"colour", "red"
-"number",	"7"
-"coins.list",	"1p,2p,5p,10p,20p,50p,£1,£2"
+"colour","red"
+"number","7"
+"coins.list","1p,2p,5p,10p,20p,50p,£1,£2"
 ```
 
 and will produce
 ```json
 "appdata":{
-  colour: "red",
-  number: "7",
-  coins: ["1p","2p","5p","10p","20p","50p","£1","£2"]
+  "colour": "red",
+  "number": "7",
+  "coins": ["1p","2p","5p","10p","20p","50p","£1","£2"]
 }
 ```
 
@@ -87,4 +87,4 @@ becomes
 
 ## Implementation details
 
-The core of the project is an __express__ server with __helmet__ for a bit of security. Dealing with googles API is handled by the __google-spreadsheet__ npm module. As it stands there's not caching on the server, instead I'm Cloudflare.
+The core of the project is an __express__ server with __helmet__ for a bit of security. Dealing with googles API is handled by the __google-spreadsheet__ npm module. As it stands there's not caching on the server, instead it sits behind Cloudflare.
